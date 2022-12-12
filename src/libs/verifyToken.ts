@@ -3,7 +3,6 @@ import jwt from 'jsonwebtoken'
 
 export interface IPayload {
     _id: string;
-    iat: number;
 } 
 
 export const TokenValidation = (req: Request, res: Response, next: NextFunction) => {

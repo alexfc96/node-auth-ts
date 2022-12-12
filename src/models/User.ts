@@ -5,7 +5,7 @@ export interface IUser extends Document {
     username: string;
     email: string;
     password: string;
-    encrypPassword(password: string): Promise<string>;
+    encryptPassword(password: string): Promise<string>;
     validatePassword(password: string): Promise<boolean>;
 };
 
@@ -30,7 +30,7 @@ const userSchema = new Schema({
     timestamps: true
 });
 
-userSchema.methods.encrypPassword = async (password: string): Promise<string> => {
+userSchema.methods.encryptPassword = async (password: string): Promise<string> => {
     const salt = await bcrypt.genSalt(10);
     return bcrypt.hash(password, salt);
 };

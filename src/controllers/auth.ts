@@ -26,8 +26,8 @@ export const signup = async (req: Request, res: Response) => {
         const token: string = jwt.sign({ _id: savedUser._id }, process.env['TOKEN_SECRET'] || '', {
             expiresIn: 60 * 60 * 24
         });
-        // res.header('auth-token', token).json(token);
-        res.header('auth-token', token).json(savedUser);
+        res.header('auth-token', token).json(token);
+        // res.header('auth-token', token).json(savedUser);
     } catch (e) {
         res.status(400).json(e);
     }
